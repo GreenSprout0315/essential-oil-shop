@@ -25,6 +25,9 @@ export default function Header() {
           <Link href="/products?category=1ml" className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors">
             1ml
           </Link>
+          <Link href="/sample-set" className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors">
+            Set
+          </Link>
           <Link href="/diagnosis" className="text-sm tracking-widest uppercase text-[#C9A84C] hover:text-[#1A1A1A] transition-colors">
             診断
           </Link>
@@ -66,6 +69,9 @@ export default function Header() {
           </Link>
           <Link href="/products?category=1ml" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors py-2">
             1ml シリーズ
+          </Link>
+          <Link href="/sample-set" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors py-2">
+            はじめてのセット
           </Link>
           <Link href="/diagnosis" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[#C9A84C] hover:text-[#1A1A1A] transition-colors py-2">
             🌿 香り診断
