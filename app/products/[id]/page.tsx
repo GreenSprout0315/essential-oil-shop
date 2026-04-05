@@ -5,6 +5,7 @@ import { getProductById } from "@/lib/products";
 import { useCartStore } from "@/lib/store";
 import Link from "next/link";
 import Image from "next/image";
+import ReviewSection from "@/components/ReviewSection";
 
 export default function ProductDetailPage({
   params,
@@ -82,6 +83,8 @@ export default function ProductDetailPage({
           </div>
         </div>
       </div>
+
+      <ReviewSection productId={id} />
     </div>
   );
 }
