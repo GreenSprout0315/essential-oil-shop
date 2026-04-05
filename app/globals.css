@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --charcoal: #1A1A1A;
+  --cream: #FAFAF8;
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--charcoal);
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
