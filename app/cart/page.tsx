@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useCartStore } from "@/lib/store";
+import { SHIPPING_FEE } from "@/lib/constants";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
@@ -21,7 +22,7 @@ export default function CartPage() {
     );
   }
 
-  const shipping = 800;
+  const shipping = SHIPPING_FEE;
   const total = totalPrice() + shipping;
 
   return (

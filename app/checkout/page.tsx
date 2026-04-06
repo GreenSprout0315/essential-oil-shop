@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useCartStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { SHIPPING_FEE } from "@/lib/constants";
 
 export default function CheckoutPage() {
   const { items, totalPrice } = useCartStore();
@@ -10,7 +11,7 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const shipping = 800;
+  const shipping = SHIPPING_FEE;
   const total = totalPrice() + shipping;
 
   if (items.length === 0) {
