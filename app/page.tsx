@@ -15,7 +15,7 @@ export default function HomePage() {
             <p className="text-xs tracking-[0.4em] uppercase text-[#C9A84C] mb-6">
               北東北の森から · 100% Pure · Natural
             </p>
-            <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-wide text-[#1A1A1A] mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-wide text-[#1A1A1A] mb-6">
               森を仕事にする人が<br />届ける、香り。
             </h1>
             <p className="text-gray-500 text-lg font-light leading-relaxed mb-4 max-w-md">
