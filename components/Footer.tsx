@@ -12,7 +12,7 @@ export default function Footer() {
           {/* SNSリンク */}
           <div className="flex gap-4">
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/greensprout0315/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#C9A84C] transition-colors"
@@ -23,7 +23,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://x.com/"
+              href="https://x.com/greensprout0315"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#C9A84C] transition-colors"
