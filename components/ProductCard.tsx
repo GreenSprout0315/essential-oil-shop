@@ -7,11 +7,13 @@ import { useState } from "react";
 
 export default function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
+  const showToast = useCartStore((s) => s.showToast);
   const [added, setAdded] = useState(false);
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     addItem(product);
+    showToast(`${product.nameJa}をカートに追加しました`);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };

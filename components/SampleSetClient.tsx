@@ -7,6 +7,7 @@ import { sampleSetProduct, sampleSetItems, sampleSetOriginalPrice } from "@/lib/
 
 export default function SampleSetClient() {
   const addItem = useCartStore((s) => s.addItem);
+  const showToast = useCartStore((s) => s.showToast);
   const [added, setAdded] = useState(false);
 
   const discountRate = Math.round(
@@ -15,6 +16,7 @@ export default function SampleSetClient() {
 
   const handleAddToCart = () => {
     addItem(sampleSetProduct);
+    showToast(`${sampleSetProduct.nameJa}をカートに追加しました`);
     setAdded(true);
     setTimeout(() => setAdded(false), 3000);
   };

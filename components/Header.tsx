@@ -31,6 +31,9 @@ export default function Header() {
           <Link href="/blog" className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors">
             Blog
           </Link>
+          <Link href="/faq" className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors">
+            FAQ
+          </Link>
           <Link href="/diagnosis" className="text-sm tracking-widest uppercase text-[#C9A84C] hover:text-[#1A1A1A] transition-colors">
             診断
           </Link>
@@ -78,6 +81,9 @@ export default function Header() {
           </Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors py-2">
             ブログ
+          </Link>
+          <Link href="/faq" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-gray-500 hover:text-[#1A1A1A] transition-colors py-2">
+            よくある質問
           </Link>
           <Link href="/diagnosis" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[#C9A84C] hover:text-[#1A1A1A] transition-colors py-2">
             🌿 香り診断

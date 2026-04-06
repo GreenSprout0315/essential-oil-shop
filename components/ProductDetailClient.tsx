@@ -1,12 +1,17 @@
 "use client";
+import { useState } from "react";
 import { useCartStore } from "@/lib/store";
-import { Product } from "@/lib/products";
+import { Product, getAlternativeSize, getRelatedProducts } from "@/lib/products";
 import Link from "next/link";
 import Image from "next/image";
 import ReviewSection from "@/components/ReviewSection";
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
+  const showToast = useCartStore((s) => s.showToast);
+  const [quantity, setQuantity] = useState(1);
+  const altSize = getAlternativeSize(product.id);
+  const relatedProducts = getRelatedProducts(product.id, 4);
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
@@ -51,8 +56,56 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               <span className="text-sm text-gray-400 tracking-wider">{product.size}</span>
               <span className="text-3xl font-light">¥{product.price.toLocaleString()}</span>
             </div>
+
+            {altSize && (
+              <div className="mb-6">
+                <p className="text-xs tracking-widest uppercase text-gray-400 mb-3">Size</p>
+                <div className="flex border border-gray-200">
+                  <span className="flex-1 text-center py-3 text-xs tracking-wider bg-[#1A1A1A] text-white">
+                    {product.size} &mdash; ¥{product.price.toLocaleString()}
+                  </span>
+                  <Link
+                    href={`/products/${altSize.id}`}
+                    className="flex-1 text-center py-3 text-xs tracking-wider text-gray-500 hover:bg-[#FAFAF8] transition-colors"
+                  >
+                    {altSize.size} &mdash; ¥{altSize.price.toLocaleString()}
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-center gap-2 mb-4">
+              <button
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                disabled={quantity <= 1}
+                aria-label="数量を減らす"
+                className="w-10 h-10 border border-gray-200 text-gray-600 hover:border-[#C9A84C] transition-colors disabled:opacity-30 disabled:hover:border-gray-200"
+              >
+                −
+              </button>
+              <span className="w-12 h-10 flex items-center justify-center text-center text-sm tracking-wider">
+                {quantity}
+              </span>
+              <button
+                onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                disabled={quantity >= 10}
+                aria-label="数量を増やす"
+                className="w-10 h-10 border border-gray-200 text-gray-600 hover:border-[#C9A84C] transition-colors disabled:opacity-30 disabled:hover:border-gray-200"
+              >
+                +
+              </button>
+            </div>
+
             <button
-              onClick={() => addItem(product)}
+              onClick={() => {
+                addItem(product, quantity);
+                showToast(
+                  quantity > 1
+                    ? `${product.nameJa} × ${quantity} をカートに追加しました`
+                    : `${product.nameJa}をカートに追加しました`
+                );
+                setQuantity(1);
+              }}
               className="w-full py-4 bg-[#1A1A1A] text-white text-xs tracking-widest uppercase hover:bg-[#3A3A3A] transition-colors"
             >
               カートに追加
@@ -74,6 +127,30 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       </div>
 
       <ReviewSection productId={product.id} />
+
+      {relatedProducts.length > 0 && (
+        <section className="mt-24 border-t border-gray-100 pt-16">
+          <h2 className="text-2xl font-light tracking-wide text-center mb-12">Related Products</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {relatedProducts.map((rp) => (
+              <Link key={rp.id} href={`/products/${rp.id}`} className="group">
+                <div className="relative aspect-square bg-[#FAFAF8] overflow-hidden mb-4">
+                  <Image
+                    src={rp.image}
+                    alt={rp.nameJa}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+                <p className="text-sm font-light tracking-wide">{rp.name}</p>
+                <p className="text-xs text-gray-400">{rp.nameJa}</p>
+                <p className="text-sm font-light mt-1">¥{rp.price.toLocaleString()}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -51,6 +51,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-gray-500">
             <li><a href="/diagnosis" className="hover:text-white transition-colors">香り診断</a></li>
             <li><a href="/blog" className="hover:text-white transition-colors">ブログ</a></li>
+            <li><a href="/faq" className="hover:text-white transition-colors">よくある質問</a></li>
             <li><a href="/tokushoho" className="hover:text-white transition-colors">特定商取引法に基づく表記</a></li>
           </ul>
         </div>

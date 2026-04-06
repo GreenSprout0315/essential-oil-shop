@@ -312,3 +312,17 @@ export function getProductById(id: string): Product | undefined {
 export function getFeaturedProducts(): Product[] {
   return products.filter((p) => p.featured);
 }
+
+export function getAlternativeSize(id: string): Product | undefined {
+  const current = products.find((p) => p.id === id);
+  if (!current) return undefined;
+  return products.find((p) => p.name === current.name && p.id !== current.id);
+}
+
+export function getRelatedProducts(id: string, limit: number = 4): Product[] {
+  const current = products.find((p) => p.id === id);
+  if (!current) return [];
+  return products
+    .filter((p) => p.category === current.category && p.id !== current.id)
+    .slice(0, limit);
+}
