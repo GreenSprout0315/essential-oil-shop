@@ -16,7 +16,7 @@ export default function HomePage() {
               北東北の森から · 100% Pure · Natural
             </p>
             <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-wide text-[#1A1A1A] mb-6">
-              森を仕事にする人が、<br />届ける香り。
+              森を仕事にする人が<br />届ける、香り。
             </h1>
             <p className="text-gray-500 text-lg font-light leading-relaxed mb-4 max-w-md">
               北東北の希少な天然木から抽出した<br />
